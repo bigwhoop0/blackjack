@@ -16,5 +16,6 @@ class Figure {
   constructor(name, valeur) {
     this.name = name;
     this.valeur = valeur;
+    Object.freeze(this);
   }
 }

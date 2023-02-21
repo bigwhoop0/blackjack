@@ -1,2 +1,2 @@
 let paquet = new Paquet();
-paquet.getlistCartes;
+paquet.getlistCartes();
