@@ -1,9 +1,25 @@
 class Paquet {
   listCartes = [];
+  figure = [
+    "As",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "valet",
+    "dame",
+    "roi",
+  ];
+  couleur = ["Pique", "Carreau", "Coeur", "Trefle"];
 
   constructor() {
-    for (const couleur in Couleur) {
-      for (const figure in Figure)
+    for (const couleur of this.couleur) {
+      for (const figure of this.figure)
         this.listCartes.push(new Carte(figure, couleur));
     }
   }
@@ -14,9 +30,5 @@ class Paquet {
 
   getlistCartes() {
     console.log(this.listCartes);
-    console.log(this.listCartes[1].couleur);
-    for (var prop in this.listCartes[1].figure) {
-      console.log(`obj.${prop} = ${this.listCartes[1][prop]}`);
-    }
   }
 }

@@ -25,7 +25,7 @@ this.mainB = new Main();
 getMainJ();
 getMainB();
 faireJouerBanque();
-getResultat();//Gagna, perdu, egalité
+getResultat();//Gagnant, perdu, egalité
 joueurHit(){
 	const nouvelleCarte=this.paquet.pioche();
 	this.mainJ.ajouterCarte(nouvelleCarte);
