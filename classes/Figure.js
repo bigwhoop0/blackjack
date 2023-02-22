@@ -1,4 +1,4 @@
-class Figure {
+class Figure extends Enumify {
   static AS = new Figure("As", 1);
   static DEUX = new Figure("2", 2);
   static TROIS = new Figure("3", 3);
