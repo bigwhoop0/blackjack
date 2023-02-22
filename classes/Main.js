@@ -1,0 +1,5 @@
+class Main {
+  listCartes = [];
+
+  constructor() {}
+}

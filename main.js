@@ -1,2 +1,2 @@
-let paquet = new Paquet();
-paquet.getlistCartes();
+let table = new Table();
+table.getPaquet();
