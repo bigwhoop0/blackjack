@@ -1,5 +1,7 @@
 class Main {
   listCartes = [];
 
-  constructor() {}
+  ajouterCarte(cartePioche) {
+    this.listCartes.push(cartePioche);
+  }
 }

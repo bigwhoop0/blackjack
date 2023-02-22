@@ -25,7 +25,10 @@ class Paquet {
     this.#melanger(this.listCartes);
   }
 
-  // pioche();
+  pioche() {
+    let cartePioche = this.listCartes.pop();
+    return cartePioche;
+  }
 
   #melanger(array) {
     for (let i = array.length - 1; i > 0; i--) {
