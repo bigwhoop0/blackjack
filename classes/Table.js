@@ -17,6 +17,13 @@ class Table {
     this.paquet.getlistCartes();
   }
 
+  joueurHit() {}
+
+  faireJouerBanque() {
+    if (this.mainB.calculerScore() >= 17) console.log("stop");
+    else this.mainBPioche();
+  }
+
   mainJPioche() {
     this.mainJ.ajouterCarte(this.paquet.pioche());
   }

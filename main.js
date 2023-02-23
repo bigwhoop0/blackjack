@@ -4,8 +4,6 @@ table.getPaquet();
 console.log(table.mainJ);
 
 console.log(table.mainB);
-table.mainJPioche();
-console.log(table.mainJ);
 
-table.mainJ.calculerScore();
-console.log(table.mainJ.score);
+console.log(table.mainJ.calculerScore());
+table.faireJouerBanque();
