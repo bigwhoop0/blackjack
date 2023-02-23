@@ -1,20 +1,6 @@
 class Paquet {
   listCartes = [];
-  figure = [
-    "As",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "valet",
-    "dame",
-    "roi",
-  ];
+  figure = ["As", 2, 3, 4, 5, 6, 7, 8, 9, 10, "valet", "dame", "roi"];
   couleur = ["Pique", "Carreau", "Coeur", "Trefle"];
 
   constructor() {
