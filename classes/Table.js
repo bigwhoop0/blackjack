@@ -3,6 +3,9 @@ class Table {
   mainJ;
   mainB;
 
+  constructor() {
+    this.nouvellePartie();
+  }
   nouvellePartie() {
     this.paquet = new Paquet();
     this.mainJ = new Main();

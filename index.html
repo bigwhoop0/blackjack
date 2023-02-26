@@ -5,14 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blackjack</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div id="jeu">
+      <h1>Black Jack</h1>
+      <button id="nouvellePartie">Nouvelle Partie</button>
+      <div class="main">
+        <div class="joueur">
+          <h4>Main joueur</h4>
+          <div id="mainJ"></div>
+        </div>
+        <div class="joueur">
+          <h4>Main Banque</h4>
+          <div id="mainB"></div>
+        </div>
+      </div>
+      <div class="hitOrStand">
+        <button id="hit">Hit</button> <button id="stand">Stand</button>
+      </div>
+      <div><p id="scoreF"></p></div>
+    </div>
+
     <script src="classes/Couleur.js"></script>
     <script src="classes/Figure.js"></script>
     <script src="classes/Carte.js"></script>
     <script src="classes/Paquet.js"></script>
     <script src="classes/Main.js"></script>
     <script src="classes/Table.js"></script>
+    <script src="classes/Interface.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
