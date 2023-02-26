@@ -7,3 +7,6 @@ console.log(table.mainB);
 
 console.log(table.mainJ.calculerScore());
 table.faireJouerBanque();
+console.log(table.mainB.calculerScore());
+console.log(table.mainB);
+console.log(table.scoreFinal());
