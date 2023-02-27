@@ -1,6 +1,30 @@
-.main{display: flex;gap: 15px;
+#jeu {
+  width: 100%;
+  text-align: center;
 }
 
-.joueur{border:1px solid black;
+.main {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  justify-content: center;
+  min-height: 240px;
+  margin: 20px;
+}
 
-padding: 10px;}
+h4 {
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0;
+}
+
+#mainJ,
+#mainB {
+  font-size: 1.5rem;
+}
+
+.joueur {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+}

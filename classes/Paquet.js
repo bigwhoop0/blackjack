@@ -1,7 +1,7 @@
 class Paquet {
   listCartesPaquet = [];
   figure = ["As", 2, 3, 4, 5, 6, 7, 8, 9, 10, "valet", "dame", "roi"];
-  couleur = ["Pique", "Carreau", "Coeur", "Trefle"];
+  couleur = ["♠", "♦", "♥", "♣"];
 
   constructor() {
     for (const couleur of this.couleur) {
