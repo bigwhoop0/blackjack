@@ -8,7 +8,7 @@ class Interface {
     this.tableJeu = new Table();
     this.buildInterface();
     console.log(this.tableJeu);
-    this.tourUn = true;
+    this.affichageScore();
   }
 
   buildInterface() {
@@ -67,7 +67,6 @@ class Interface {
     if (this.tourUn) {
       let distriB = document.createElement("p");
       let carte = this.tableJeu.mainB.listCartes[0];
-      console.log("test");
       distriB.textContent = `${carte.figure} ${carte.couleur}`;
       mainB.append(distriB);
     } else
@@ -77,8 +76,13 @@ class Interface {
         mainB.append(distriB);
       });
   }
+
   affichageScore() {
     let scoreF = document.querySelector("#scoreF");
+    if (this.tourUn) {
+      scoreF.textContent = "";
+      return;
+    }
     let score = this.tableJeu.scoreFinal();
     console.log(score);
     scoreF.textContent = score;
