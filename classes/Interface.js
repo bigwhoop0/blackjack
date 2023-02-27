@@ -56,6 +56,8 @@ class Interface {
     mainJoueur.textContent = "";
     this.tableJeu.mainJoueur.listCartes.forEach((carte) => {
       let distriJ = document.createElement("p");
+      let couleurSymbole = this.#couleurCarte(carte.couleur); //couleur selon le symbole de la carte
+      distriJ.classList.add(couleurSymbole);
       distriJ.textContent = `${carte.figure} ${carte.couleur}`;
       mainJoueur.append(distriJ);
     });
@@ -66,15 +68,25 @@ class Interface {
     if (this.tourUn) {
       //La deuxième carte de la Banque n'est pas affichée lors du premier tour
       let distriB = document.createElement("p");
-      let carte = this.tableJeu.mainBanque.listCartes[0]; //Affichage que de la première carte de la main
+      let carte = this.tableJeu.mainBanque.listCartes[0]; //Affichage de la première carte de la main uniquement
+      let couleurSymbole = this.#couleurCarte(carte.couleur); //couleur selon le symbole de la carte
+      distriB.classList.add(couleurSymbole);
       distriB.textContent = `${carte.figure} ${carte.couleur}`;
       mainBanque.append(distriB);
     } else
       this.tableJeu.mainBanque.listCartes.forEach((carte) => {
         let distriB = document.createElement("p");
+        let couleurSymbole = this.#couleurCarte(carte.couleur); //couleur selon le symbole de la carte
+        distriB.classList.add(couleurSymbole);
         distriB.textContent = `${carte.figure} ${carte.couleur}`;
         mainBanque.append(distriB);
       });
+  }
+
+  #couleurCarte(couleurSymbole) {
+    //couleur selon le symbole de la carte
+    if (couleurSymbole === "♦" || couleurSymbole === "♥") return "rouge";
+    else return "noir";
   }
 
   #affichageScore() {
