@@ -12,6 +12,7 @@ class Table {
     this.mainJoueur = new Main();
     this.mainBanque = new Main();
 
+    //Pioche 2  cartes par main
     for (let pioche = 0; pioche < 2; pioche++) {
       this.joueurPioche();
       this.banquePioche();
@@ -24,6 +25,7 @@ class Table {
   }
 
   faireJouerBanque() {
+    //A son tour, si la valeur de la main de la Banque est strictement inférieur à 17, elle pioche
     let scoreBanqueActuelle = this.mainBanque.calculerScore();
     if (scoreBanqueActuelle >= 17) return;
     else this.banquePioche();
@@ -40,6 +42,7 @@ class Table {
   }
 
   resultatFinal() {
+    //Comparaison des scores pour déterminer le gagant
     let scoreJoueur = this.mainJoueur.calculerScore();
     let scoreBanque = this.mainBanque.calculerScore();
     if (Math.abs(scoreBanque - scoreJoueur) === 0) return "Egalite";

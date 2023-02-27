@@ -1,18 +1,19 @@
 class Interface {
   tableJeu;
-  partieUn = false;
+  partieUn = true;
   tourUn;
 
   init() {
-    this.tourUn = true;
+    this.tourUn = true; //Premier tour
     this.tableJeu = new Table();
     this.#buildInterface();
   }
 
   #buildInterface() {
-    if (!this.partieUn) {
+    //Seulement à la première partie, mise en place des écouteurs
+    if (this.partieUn) {
       this.#eventListener();
-      this.partieUn = true;
+      this.partieUn = false;
     }
     this.#affichageGeneral();
   }
@@ -22,21 +23,23 @@ class Interface {
     let hit = document.querySelector("#hit");
     let stand = document.querySelector("#stand");
 
+    //Relance une nouvelle partie
     buttonPartie.addEventListener("click", () => {
       this.init();
     });
 
+    //Le joueur hit
     hit.addEventListener("click", () => {
       if (!this.tourUn) return;
       this.tableJeu.joueurHit();
-      this.tourUn = false;
+      this.tourUn = false; //Passe tourUn à false pour déclencher le deuxième tour
       this.#affichageGeneral();
     });
-
+    //Lejoueur stand
     stand.addEventListener("click", () => {
       if (!this.tourUn) return;
       this.tableJeu.faireJouerBanque();
-      this.tourUn = false;
+      this.tourUn = false; //Passe tourUn à false pour déclencher le deuxième tour
       this.#affichageGeneral();
     });
   }
@@ -61,8 +64,9 @@ class Interface {
   #affichageBanque(mainBanque) {
     mainBanque.textContent = "";
     if (this.tourUn) {
+      //La deuxième carte de la Banque n'est pas affichée lors du premier tour
       let distriB = document.createElement("p");
-      let carte = this.tableJeu.mainBanque.listCartes[0];
+      let carte = this.tableJeu.mainBanque.listCartes[0]; //Affichage que de la première carte de la main
       distriB.textContent = `${carte.figure} ${carte.couleur}`;
       mainBanque.append(distriB);
     } else
@@ -76,10 +80,11 @@ class Interface {
   #affichageScore() {
     let resultatDiv = document.querySelector("#scoreF");
     if (this.tourUn) {
+      //Efface résultat précedent lotrs du premier tour
       resultatDiv.textContent = "";
       return;
     }
     let resultat = this.tableJeu.resultatFinal();
-    resultatDiv.textContent = resultat;
+    resultatDiv.textContent = resultat; //Affiche résultat
   }
 }
