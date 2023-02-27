@@ -1,18 +1,18 @@
 class Paquet {
-  listCartes = [];
+  listCartesPaquet = [];
   figure = ["As", 2, 3, 4, 5, 6, 7, 8, 9, 10, "valet", "dame", "roi"];
   couleur = ["Pique", "Carreau", "Coeur", "Trefle"];
 
   constructor() {
     for (const couleur of this.couleur) {
       for (const figure of this.figure)
-        this.listCartes.push(new Carte(figure, couleur));
+        this.listCartesPaquet.push(new Carte(figure, couleur));
     }
-    this.#melanger(this.listCartes);
+    this.#melanger(this.listCartesPaquet);
   }
 
   pioche() {
-    let cartePioche = this.listCartes.pop();
+    let cartePioche = this.listCartesPaquet.pop();
     return cartePioche;
   }
 
@@ -27,9 +27,5 @@ class Paquet {
       // let t = array[i]; array[i] = array[j]; array[j] = t
       [array[i], array[j]] = [array[j], array[i]];
     }
-  }
-
-  getlistCartes() {
-    console.log(this.listCartes);
   }
 }

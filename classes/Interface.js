@@ -6,25 +6,18 @@ class Interface {
   init() {
     this.tourUn = true;
     this.tableJeu = new Table();
-    this.buildInterface();
-    console.log(this.tableJeu);
-    this.affichageScore();
+    this.#buildInterface();
   }
 
-  buildInterface() {
-    let mainJ = document.querySelector("#mainJ");
-    let mainB = document.querySelector("#mainB");
-
+  #buildInterface() {
     if (!this.partieUn) {
-      this.eventListener(mainB, mainJ);
+      this.#eventListener();
       this.partieUn = true;
     }
-
-    this.affichageJ(mainJ);
-    this.affichageB(mainB);
+    this.#affichageGeneral();
   }
 
-  eventListener(mainB, mainJ) {
+  #eventListener() {
     let buttonPartie = document.querySelector("#nouvellePartie");
     let hit = document.querySelector("#hit");
     let stand = document.querySelector("#stand");
@@ -37,54 +30,56 @@ class Interface {
       if (!this.tourUn) return;
       this.tableJeu.joueurHit();
       this.tourUn = false;
-      this.affichageJ(mainJ);
-      this.affichageB(mainB);
-      this.affichageScore();
+      this.#affichageGeneral();
     });
 
     stand.addEventListener("click", () => {
       if (!this.tourUn) return;
       this.tableJeu.faireJouerBanque();
       this.tourUn = false;
-      this.affichageJ(mainJ);
-      this.affichageB(mainB);
-
-      this.affichageScore();
+      this.#affichageGeneral();
     });
   }
 
-  affichageJ(mainJ) {
-    mainJ.textContent = "";
-    this.tableJeu.mainJ.listCartes.forEach((carte) => {
+  #affichageGeneral() {
+    let mainJ = document.querySelector("#mainJ");
+    let mainB = document.querySelector("#mainB");
+    this.#affichageJoueur(mainJ);
+    this.#affichageBanque(mainB);
+    this.#affichageScore();
+  }
+
+  #affichageJoueur(mainJoueur) {
+    mainJoueur.textContent = "";
+    this.tableJeu.mainJoueur.listCartes.forEach((carte) => {
       let distriJ = document.createElement("p");
       distriJ.textContent = `${carte.figure} ${carte.couleur}`;
-      mainJ.append(distriJ);
+      mainJoueur.append(distriJ);
     });
   }
 
-  affichageB(mainB) {
-    mainB.textContent = "";
+  #affichageBanque(mainBanque) {
+    mainBanque.textContent = "";
     if (this.tourUn) {
       let distriB = document.createElement("p");
-      let carte = this.tableJeu.mainB.listCartes[0];
+      let carte = this.tableJeu.mainBanque.listCartes[0];
       distriB.textContent = `${carte.figure} ${carte.couleur}`;
-      mainB.append(distriB);
+      mainBanque.append(distriB);
     } else
-      this.tableJeu.mainB.listCartes.forEach((carte) => {
+      this.tableJeu.mainBanque.listCartes.forEach((carte) => {
         let distriB = document.createElement("p");
         distriB.textContent = `${carte.figure} ${carte.couleur}`;
-        mainB.append(distriB);
+        mainBanque.append(distriB);
       });
   }
 
-  affichageScore() {
-    let scoreF = document.querySelector("#scoreF");
+  #affichageScore() {
+    let resultatDiv = document.querySelector("#scoreF");
     if (this.tourUn) {
-      scoreF.textContent = "";
+      resultatDiv.textContent = "";
       return;
     }
-    let score = this.tableJeu.scoreFinal();
-    console.log(score);
-    scoreF.textContent = score;
+    let resultat = this.tableJeu.resultatFinal();
+    resultatDiv.textContent = resultat;
   }
 }

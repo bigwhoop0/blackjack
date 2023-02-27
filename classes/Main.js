@@ -13,7 +13,6 @@ class Main {
         score + 10 <= 21 ? (score += 10) : (score += 1);
       } else score += 10;
     });
-    console.log(score);
     return score;
   }
 }

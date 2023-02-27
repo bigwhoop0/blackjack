@@ -1,51 +1,53 @@
 class Table {
   paquet;
-  mainJ;
-  mainB;
+  mainJoueur;
+  mainBanque;
 
   constructor() {
     this.nouvellePartie();
   }
+
   nouvellePartie() {
     this.paquet = new Paquet();
-    this.mainJ = new Main();
-    this.mainB = new Main();
-    this.mainJPioche();
-    this.mainJPioche();
-    this.mainBPioche();
-    this.mainBPioche();
-  }
+    this.mainJoueur = new Main();
+    this.mainBanque = new Main();
 
-  getPaquet() {
-    this.paquet.getlistCartes();
+    for (let pioche = 0; pioche < 2; pioche++) {
+      this.joueurPioche();
+      this.banquePioche();
+    }
   }
 
   joueurHit() {
-    this.mainJPioche();
+    this.joueurPioche();
     this.faireJouerBanque();
   }
 
   faireJouerBanque() {
-    if (this.mainB.calculerScore() >= 17) console.log("stop");
-    else this.mainBPioche();
+    let scoreBanqueActuelle = this.mainBanque.calculerScore();
+    if (scoreBanqueActuelle >= 17) return;
+    else this.banquePioche();
   }
 
-  mainJPioche() {
-    this.mainJ.ajouterCarte(this.paquet.pioche());
+  joueurPioche() {
+    let cartePioche = this.paquet.pioche();
+    this.mainJoueur.ajouterCarte(cartePioche);
   }
 
-  mainBPioche() {
-    this.mainB.ajouterCarte(this.paquet.pioche());
+  banquePioche() {
+    let cartePioche = this.paquet.pioche();
+    this.mainBanque.ajouterCarte(cartePioche);
   }
-  scoreFinal() {
-    let scoreJ = this.mainJ.calculerScore();
-    let scoreB = this.mainB.calculerScore();
-    if (Math.abs(scoreB - scoreJ) === 0) return "Egalite";
-    else if (scoreJ > 21 && scoreB > 21)
-      return "La banque et le joueur ont perdu";
-    else if (scoreJ > 21) return "Le joueur a perdu";
-    else if (scoreB > 21) return "La banqe a perdu";
-    else if (21 - scoreJ > 21 - scoreB) return "la Banque a gagné";
+
+  resultatFinal() {
+    let scoreJoueur = this.mainJoueur.calculerScore();
+    let scoreBanque = this.mainBanque.calculerScore();
+    if (Math.abs(scoreBanque - scoreJoueur) === 0) return "Egalite";
+    else if (scoreJoueur > 21 && scoreBanque > 21)
+      return "La banque et vous avez perdu";
+    else if (scoreJoueur > 21) return "Vous avez perdu";
+    else if (scoreBanque > 21) return "Vous avez gagné";
+    else if (21 - scoreJoueur > 21 - scoreBanque) return "La Banque a gagné";
     else return "Vous avez gagné";
   }
 }
