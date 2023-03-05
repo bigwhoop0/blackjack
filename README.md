@@ -1,2 +1,2 @@
 # blackjack
-Jeu de BlackJack en Javasript
+Jeu de BlackJack en Javascript
